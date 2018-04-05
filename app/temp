@@ -1,0 +1,65 @@
+
+      debugger;
+    return (
+      <View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          animationType="fade"
+          visible={this.props.visible}
+          onRequestClose={() => {
+            alert('Modal has been closed.');
+          }}>
+          <View  style={{justifyContent: "center", margin: 10}}>
+            <View style={{justifyContent: 'space-between', borderRadius: 20,
+                    borderTopWidth: 1,borderColor: 'rgba(47,50,62,0.5)',borderRightWidth: 1,borderColor: 'rgba(47,50,62,0.5)',
+                    backgroundColor: 'rgba(47,50,62,1)', height: window.height/1.1}}>
+                <View style={{top: '1%'}}>
+                  
+                    <View style={{alignItems: 'center'}}>
+                      <Image
+                        style={{height: window.width/3, width: window.width/3, borderRadius: window.width/6}}
+                        source={{uri:(this.props.userData.picture.large)}}
+                      /> 
+                    </View>
+
+                  <View style={{alignItems: 'center'}}>
+                    <Text style={{fontSize: window.height/35,fontFamily: 'Cochin'}}>
+                     {this.convertTextToWords(this.props.userData.name.title.trim()+". "+this.props.userData.name.first.trim()+" "+this.props.userData.name.last.trim())}
+                    </Text>
+                    <Text>Email: {this.props.userData.email}</Text>
+                    <Text>Contact: {this.props.userData.phone}</Text>
+                    <Text>Cell No.: {this.props.userData.cell}</Text>
+                    <Text>{this.convertTextToWords(this.props.userData.location.street)}</Text>
+                    <Text>{this.convertTextToWords(this.props.userData.location.city)}</Text>
+                    <Text>{this.convertTextToWords(this.props.userData.location.state)}</Text>
+                    <Text>{"Postcode: "+this.props.userData.location.postcode}</Text>
+                     
+                  </View>
+
+                </View>
+
+                <View>
+                    <View
+                        style={{
+                            height: 1,
+                            backgroundColor: "#CED0CE",
+                        }}>
+                    </View>
+                    <TouchableHighlight
+                        onPress={() => {
+                        this.props.onClick();
+                        }}>
+                        <View>
+                            <View style={{ borderRadius: 5, padding: '4%', alignItems: 'flex-end' }}>
+                                <Text style={{color:"blue"}}>Okay , Got it</Text>                  
+                            </View>
+                        </View>
+                    </TouchableHighlight>
+                </View>
+            </View>
+          </View>
+          
+        </Modal>
+      </View>
+    );
